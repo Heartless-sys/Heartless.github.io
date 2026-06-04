@@ -105,3 +105,88 @@
         }
 
         .channel-card:hover {
+            background-color: var(--card-hover);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .channel-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 12px;
+            background-color: #1a1a24;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .channel-name {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .channel-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Heartless <span>IPTV</span> Player</h1>
+    </header>
+
+    <div class="container">
+        <div class="player-section">
+            <div class="video-container">
+                <iframe id="live-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <div class="now-playing">Now Playing: <span id="current-channel">Select a Channel</span></div>
+        </div>
+
+        <h2 style="margin-bottom: 20px; font-size: 20px; border-left: 4px solid var(--accent-color); padding-left: 10px;">Channels</h2>
+        <div class="channel-grid">
+            
+            <div class="channel-card" onclick="changeChannel('Somoy TV Live', 'https://www.youtube.com/embed/live_stream?channel=UCE6GfI9asN67zKz4XmGZp3Q')">
+                <div class="channel-logo">STV</div>
+                <div class="channel-name">Somoy TV Live</div>
+            </div>
+
+            <div class="channel-card" onclick="changeChannel('Jamuna TV Live', 'https://www.youtube.com/embed/live_stream?channel=UCs9_9p_I66Sxy4Cq7sh8T9g')">
+                <div class="channel-logo">JTV</div>
+                <div class="channel-name">Jamuna TV</div>
+            </div>
+
+            <div class="channel-card" onclick="changeChannel('Independent TV', 'https://www.youtube.com/embed/live_stream?channel=UCc1eNfS8_Vat9bV800F6Iig')">
+                <div class="channel-logo">ITV</div>
+                <div class="channel-name">Independent TV</div>
+            </div>
+
+            <div class="channel-card" onclick="changeChannel('Channel 24', 'https://www.youtube.com/embed/live_stream?channel=UCpHeC_vCgQZas3Q9g6Lre3g')">
+                <div class="channel-logo">C24</div>
+                <div class="channel-name">Channel 24</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function changeChannel(name, url) {
+            document.getElementById('current-channel').innerText = name;
+            document.getElementById('live-player').src = url;
+        }
+    </script>
+
+</body>
+</html>
